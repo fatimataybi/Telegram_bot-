@@ -4,12 +4,13 @@ from telebot import types
 from datetime import datetime
 import os
 
-# تسجيل التشغيل
+# تسجيل التشغيل في ملف log
 with open("log.txt", "a") as log:
-    log.write(f"بوت بدأ في: {datetime.now()}\n")
+    log.write(f"بوت بدأ في: {datetime.now()}
+")
 
-# التوكن من متغير البيئة
-TOKEN = os.getenv("BOT_TOKEN")
+# قراءة التوكن من متغير البيئة
+TOKEN = os.getenv("TOKEN")
 bot = telebot.TeleBot(TOKEN)
 
 student_list = []
@@ -75,7 +76,6 @@ def register_name(message):
     username = message.from_user.first_name
     if message.from_user.username:
         username += f" (@{message.from_user.username})"
-
     name_with_tag = f"{username} #"
 
     if name_with_tag not in student_list:
@@ -90,7 +90,6 @@ def delete_name(message):
     username = message.from_user.first_name
     if message.from_user.username:
         username += f" (@{message.from_user.username})"
-
     name_with_tag = f"{username} #"
 
     if name_with_tag in student_list:
@@ -113,5 +112,5 @@ def next_name(message):
     else:
         bot.send_message(message.chat.id, "📭 القائمة فارغة.")
 
-print("🤖 البوت يعمل الآن...")
+print("🤖 el bot está funcionando...")
 bot.infinity_polling()
